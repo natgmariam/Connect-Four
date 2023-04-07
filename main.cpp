@@ -268,42 +268,42 @@ bool diagonalCheck(LL<bool> board[], int size)
 {
 	if (size < 5) return false;
 	int count = 0;
-    //i cant make the right up work for the life of me soooo grade me nicely :)
-    // for (int x = 0; x < size; x++) //row 
-	// {
-	// 	for (int y = 0; y < size-1; y++)  //col 
-	// 	{
-	// 		int currRow = x, currCol = y;       //working x and y 
-	// 		count = 0;
-	// 		while (currRow+2 >= 0 && currCol < size-1)
-	// 		{
-	// 			int length = (board[currCol].size()); //location on col 
-    //             int nextRow = (board[currCol +1].size());
-	// 			if (length >= currRow)
-	// 			{
-	// 				auto first = board[currCol].begin();  //1st node
-    //                 auto second = board[currCol+1].begin();  
-	// 				for (int i = 0; i < length - currRow - count; i++) //to determine, where it lands
-    //                 {   
-    //                     //i+=1; 
-    //                     first++;
-    //                     second++; 
+    
+    for (int x = 0; x < size; x++) //row 
+	{
+		for (int y = 0; y < size-1; y++)  //col 
+		{
+			int currRow = x, currCol = y;       //working x and y 
+			count = 0;
+			while (currRow+2 >= 0 && currCol < size-1)
+			{
+				int length = (board[currCol].size()); //location on col 
+                int nextRow = (board[currCol +1].size());
+				if (length >= currRow)
+				{
+					auto first = board[currCol].begin();  //1st node
+                    auto second = board[currCol+1].begin();  
+					for (int i = 0; i < length - currRow - count; i++) //to determine, where it lands
+                    {   
+                        //i+=1; 
+                        first++;
+                        second++; 
                         
 
-	// 			    }
-    //                 second--; 
-    //                 if (currCol >= 1 && *first == *second) {
-    //                         count++;
-    //                         if (count == 4) return true;
-    //                     }
-    //                     else count = -1;
-    //             }
-	// 			else count = 0;
-	// 			currRow++;                  //dec the rows 
-	// 			currCol--;                  //inc the col till a match 
-	// 		}
-    //     }
-	// }
+				    }
+                    second--; 
+                    if (currCol >= 1 && *first == *second) {
+                            count++;
+                            if (count == 4) return true;
+                        }
+                        else count = -1;
+                }
+				else count = 0;
+				currRow++;                  //dec the rows 
+				currCol--;                  //inc the col till a match 
+			}
+        }
+	}
 
     //checks left down
 	for (int x = 4; x < size; x++) //row 
